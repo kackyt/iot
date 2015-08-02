@@ -1,0 +1,6 @@
+TO:sample@hoge.com
+Subject:daily heartbeat
+
+おはようございます。Raspberry Piです。
+今日の運勢は『%s』です。
+一日頑張っていきましょう！

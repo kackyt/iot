@@ -1,0 +1,30 @@
+#!/usr/bin/ruby -Ku
+
+require "rubygems"
+require "weighted_randomizer"
+
+unsei = {
+"大吉" => 50,
+"吉" => 25,
+"中吉" => 12,
+"小吉" => 8,
+"凶" => 5,
+}
+
+randomizer = WeightedRandomizer.new(unsei)
+
+File.open("mail.txt") do |file|
+
+  tmp = file.read
+
+  todays_unsei = randomizer.sample
+
+  mail = sprintf(tmp,todays_unsei)
+
+  IO.popen("/usr/sbin/sendmail -t", "w") do |io|
+    io.puts mail
+    io.close_write
+  end
+end
+
+
